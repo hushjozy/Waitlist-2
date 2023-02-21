@@ -45,23 +45,33 @@
           <h6 class="h6-tags">SECONDS</h6>
         </div>
       </div>
-      <div class="input_mail">
-        <input
-          type="text"
-          placeholder="Please enter your email"
-          class="sub_input"
-         
-          id="input_id"
-        />
-        <button class="join_us_btn">Join Us</button>
-      </div>
+      <form id="”contact”" onsubmit="return postToGoogle();">
+        <div class="input_mail">
+          <!-- <div jscontroller="yUS4Lc" jsaction="rcuQ6b:rcuQ6b;UxRBlf:rcuQ6b;">
+            <div jsname="o6bZLc">
+              <input type="hidden" name="entry.1128854083" value="" />
+            </div>
+          </div> -->
+
+          <input
+            type="text"
+            placeholder="Please enter your email"
+            class="sub_input"
+            name="entry.1128854083"
+            id="input_id"
+          />
+          <button class="join_us_btn" type="submit">Join Us</button>
+        </div>
+      </form>
       <div class="icons_container">
         <div class="icons">
           <a class="socials" href="facebook.com"
             ><i class="fa-brands fa-facebook"></i
           ></a>
           <a class="socials" href="#"><i class="fa-brands fa-whatsapp"></i></a>
-          <a class="socials" href="https://instagram.com/hairmarket_ng?igshid=YmMyMTA2M2Y="
+          <a
+            class="socials"
+            href="https://instagram.com/hairmarket_ng?igshid=YmMyMTA2M2Y="
             ><i class="fa-brands fa-instagram"></i
           ></a>
           <a class="socials" href="twitter.com">
@@ -71,13 +81,43 @@
       </div>
 
       <footer>
-        <p>
-          2023 Hair Market Coming Soon. All Rights Reserved | 
-        </p>
+        <p>2023 Hair Market Coming Soon. All Rights Reserved |</p>
       </footer>
     </div>
 
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+      function postToGoogle() {
+        var field = $("#input_id").val();
+
+        $.ajax({
+          url: "https://docs.google.com/forms/u/4/d/e/1FAIpQLSfO-YZRuVXbppi4x9fdM5U3D_1LcEPR9GAoCCuHbG0z0cr2PQ/formResponse",
+
+          //add your google form generated numbers below which are also the 'names' of your inputs
+          data: {
+            "entry.1128854083": field,
+          },
+          type: "POST",
+          dataType: "xml",
+          success: function (d) {
+            $("#contact").trigger("reset");
+            alert(
+              "We have received your Join Request and can't wait to show you what we have in store"
+            );
+          },
+          error: function (x, y, z) {
+            $("#contact").trigger("reset");
+            alert(
+              "We have received your Join Request and can't wait to show you what we have in store"
+            );
+            location.href = "/";
+          },
+        });
+        return false;
+      }
+    </script>
     <script
       src="https://kit.fontawesome.com/d5317be683.js"
       crossorigin="anonymous"
