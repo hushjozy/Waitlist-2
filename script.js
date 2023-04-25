@@ -1,4 +1,4 @@
-let countDownDate = new Date("March 10, 2023 00:00:00").getTime();
+let countDownDate = new Date("May 13, 2023 00:00:00").getTime();
 let x = setInterval(function () {
   var now = new Date().getTime();
   var distance = countDownDate - now;
@@ -13,7 +13,7 @@ let x = setInterval(function () {
   document.getElementById("seconds").innerHTML = seconds;
 
   let countdown = document.getElementById("countdown-timer");
-  if (distance <= 3600000) {
+    if (distance <= 3600000) {
     countdown.classList.add("smaller");
   } else {
     countdown.classList.remove("smaller");
@@ -23,3 +23,4 @@ let x = setInterval(function () {
     document.getElementById("countdown-timer").innerHTML = "EXPIRED";
   }
 }, 1000);
+
